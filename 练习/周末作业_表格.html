@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            width: 550px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border: 1px solid red;
+        }
+        div,form{
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 10px;     
+        }
+        input{
+            border: 1px solid pink;
+            width: 200px;
+            height: 20px;
+            margin-left: 30px;
+            /* margin: 0 auto; */
+        }
+        button{
+            border: 1px solid goldenrod;
+            width: 150px;
+            height: 20px;
+            /* margin: 0 auto; */
+        }
+        h1{
+            width: 140px;
+            margin: 0 auto;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 17px;
+        }
+        table{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            border-collapse:collapse; /* 表格的边框被折叠成一个单一的边框 */
+        }    
+        table tr td{
+            border: 1px solid black;
+            margin: 0 auto;
+            font-size: 14px;
+            padding:3px 7px 2px 7px;
+            width: 80px;
+        }
+        table tr td #cb{
+            width: 10px;
+            height: 10px;
+            margin-left: 2px;
+        }
+        table tr.bgc{
+            background-color:pink;
+        }
+        /* table tr:last-child{
+            display: none;
+        } */
+        /* table tr.nulll{
+            display: none;
+        } */
+        div button{
+            margin-top: 50px;
+            margin-right: 20px;
+            width: 70px;
+        }
+        div button:first-child{
+            margin-left: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+    
+        window.onload=function(){
+            var cbs=document.getElementsByClassName('dxk');//拿到多选框
+            var trs=document.getElementsByTagName('tr');   //拿到行
+            var btns=document.getElementsByClassName('btn');//拿到两个按钮
+
+            console.log(cbs);
+            console.log(trs);
+            //1.给当前鼠标移入的一行 添加背景颜色
+            Array.prototype.slice.call(trs).forEach(function(item,index){ //返回一个数组
+                item.onmouseover=function(){
+                       //  给所有按钮清除样式
+                    for (var i = 0; i < trs.length; i++) {
+                        trs[i].removeAttribute("class");
+                    }
+                    this.setAttribute("class", 'bgc');
+                }
+                item.onmouseout=function(){
+                       //  给所有按钮清除样式
+                    for (var i = 0; i < trs.length; i++) {
+                        trs[i].removeAttribute("class");
+                    }
+                    this.setAttribute("class", '');
+                }
+            });
+
+
+            var form = document.forms[0];
+            form.onsubmit=function(){
+                //表单验证
+                var inputs =document.getElementsByTagName("input")[0]
+                // alert(inputs);
+                if(!inputs.value){
+                    event.preventDefault();
+                    alert("请输入数字行数后再点击确定");
+                }
+            }
+
+              
+            
+
+            var one=document.getElementsByTagName('tr')[4];
+            var result=one.cloneNode(true);
+            console.log(result);
+          
+            console.log(btns);
+
+            var div=document.getElementsByTagName('div'); 
+            btns[0].onclick=function(){  //增加按钮
+                one.insertBefore(result,div);
+            }
+
+
+
+
+
+        }
+ 
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="请输入您想要添加的行数n">
+        <button>确定</button>
+    </form>
+    <h1>学生信息表格</h1>
+    <table>
+        <tr class="bgc">
+            <td><input type="checkbox" name="" id="cb" class="dxk"></td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>班级</td>
+        </tr>
+        
+        <tr>
+            <td><input type="checkbox" name="" id="cb" class="dxk"></td>
+            <td>夏时若</td>
+            <td>23</td>
+            <td>web1709</td>
+          
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" id="cb" class="dxk"></td>
+            <td>王五</td>
+            <td>19</td>
+            <td>web1709</td>
+          
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" id="cb" class="dxk"></td>
+            <td>张三丰</td>
+            <td>27</td>
+            <td>web1709</td>
+        </tr>
+        <tr class="nulll">
+            <td><input type="checkbox" name="" id="cb" class="dxk"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div>
+        <button class="btn">添加</button>
+        <button class="btn">删除</button>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var outer=document.getElementById("outer");
+            var input=document.getElementsByTagName("input")[0];
+
+            outer.onmouseover=function(event){
+                console.log(event.target);
+            }
+            input.onkeydown=function(event){
+                // alert(event.shiftKey);//测试是否按了shift键
+                // alert(event.keyCode);//
+                if(event.keyCode==38){
+                    alert("向上走---");
+                }else if(event.keyCode==37){
+                    alert("向左转-←");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text">
+    <div id="outer">
+        <div id="center">
+            <div id="inner"></div>
+        </div>
+    </div>
+</body>
+</html>

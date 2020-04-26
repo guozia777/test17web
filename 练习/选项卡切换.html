@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+        div{
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        li{
+            width: 500px;
+            border: 1px solid black;
+            height: 300px;
+            list-style: none;
+            margin: 0 auto;
+            display: none;
+        }
+        button.currentBtn{
+            background-color: orange;
+        }
+
+        li.currentLi{
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var btns=document.getElementsByTagName('button');
+            var lis=document.getElementsByTagName('li');
+
+            // // 1.给当前点击按钮 添加背景颜色
+            // Array.prototype.slice.call(btns).forEach(function(item,index){ //返回一个数组
+            //     item.onclick=function(){
+
+                  
+            //         // console.log(this);
+            //             //给当前点击按钮添加样式
+            //             // // this.style.backgroundColor='orange';
+            //         // this.setAttribute("class",'currentBtn');
+
+
+            //         //   //给所有按钮清除样式
+            //         //   for(var i=0;i<btns.length;i++){
+            //         //       btns[i].removeAttribute("class");
+            //         //   }
+            //         // this.setAttribute("class",'currentBtn');
+
+            //         //给所有按钮清除样式 法二
+            //         for(var i=0;i<btns.length;i++){
+            //         btns[i].className='';
+            //         }
+            //         // 隐藏所有其他没被选中的li元素
+            //         for(var j=0;j<lis.length;j++){
+            //             lis[j].className='';
+            //         }
+            //         //匹配当前li
+            //         lis[index].className='currentLi';
+            //         this.className='currentBtn';
+
+            //     }
+            // });
+
+
+
+
+            // f法二：  用for循环实现
+            for(var i=0;i<btns.length;i++){
+                btns[i].onclick=(function(num){
+                    return function(){
+                        for(var k=0;k<btns.length;k++){
+                            btns[k].className='';
+                        }
+                        this.className='currentBtn';
+                        //隐藏所有其他没被选中的li元素
+                        for(var j=0;j<lis.length;j++){
+                            lis[j].className='';
+                        }
+                        lis[num].className='currentLi';
+
+                    }
+                })(i);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <button class="currentBtn">商品首页</button>
+        <button>商品详情</button>
+        <button>商品购物车</button>
+        <button>商品设置</button>
+    </div>
+    <ul>
+        <li class="currentLi">商品首页.html---</li>
+        <li>商品详情页---</li>
+        <li>商品购物车页面---</li>
+        <li>商品设置页面---</li>
+    </ul>
+</body>
+</html>

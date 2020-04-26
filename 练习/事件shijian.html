@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+       function handler(){
+                alert("12345");
+        }//把函数拿出window.onload 这个handler函数才有效。
+        window.onresize=function(){
+            console.log("我的大小被重置了！！");
+        }
+        window.onload=function(){
+        // 当文档树加载完毕之后再执行当前方法
+           var input=document.getElementsByTagName("input")[0];
+           var div=document.getElementsByTagName("div")[0];
+             
+             input.onblur=function(){
+                 alert("失去焦点啦！！！");
+             }
+             div.onmousedown=function(event){
+                 event.target.style.backgroundColor='pink';
+                //  alert("down---");
+             }
+             div.onmouseup=function(event){
+                event.target.style.backgroundColor='skyblue';
+                //  alert("up---");
+             }
+             
+             
+             
+                // input.onselect=function(){
+                //     alert("我被选中啦");
+                // }
+
+       
+       }
+    
+   
+    </script>
+</head>
+<body>
+    <input type="text" value="hello">
+    <div onclick="alert('hello!!');"></div>
+    <div onclick="handler()"></div>
+</body>
+</html>

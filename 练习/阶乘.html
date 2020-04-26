@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+            // 求1!+2!+3!+...+10!的和
+            var num = 0;
+            var mix = 1;
+
+            for (var i = 1; i <= 10; i++) {
+                mix = mix * i;
+                num = num + mix;
+            }
+            document.write(num);
+
+
+
+
+            // //阶乘
+            
+            // function sum(num) {
+            //     if (num <= 1) {
+            //         return 1
+            //     } else {
+            //         return num * arguments.callee(num - 1)
+            //     }
+            // }
+
+            // var result = sum(10);
+            // console.log(result);
+
+
+
+
+            // //实现1!+2!+3!+4!+5!+....+n!    错误
+            //     var n = parseInt(prompt("请输入数字"));
+            //     var z = 1;
+            //     for (var j = 1; j <= n; j++) {
+            //         z=z*j;
+            //         n=n+z;
+            //     }
+            //     document.write(n);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
